@@ -1,0 +1,46 @@
+﻿@model PersonViewModel
+<h2>THÔNG TIN ĐĂNG KÝ</h2>
+<hr />
+<form id="Register-form" asp-action="XuLy" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Họ tên</label>
+        <input asp-for="FullName" id="FullName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Ngày sinh</label>
+        <input asp-for="BirthDay" id="BirthDay" type="text" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Hình đại diện</label>
+        <input name="FHinh" type="file" class="form-control" />
+    </div>
+    @* ajax hien thi thong tin *@
+    
+    <button type="submit" class="btn btn-primary">Đăng ký</button>
+    <div id="infomation">
+    </div>
+</form>
+@section Scripts {
+    <script>
+              $(function () {
+
+            $("#Register-form").submit(function (e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+
+                $.ajax({
+                    url: '@Url.Action("XuLy")',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        $("#infomation").html(data);
+                        console.log("haha");
+                    }
+                });
+            });
+        });
+        
+    </script>
+}
