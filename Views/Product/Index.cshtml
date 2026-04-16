@@ -1,0 +1,31 @@
+﻿@model List<Product>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<h2>Danh sách sản phẩm</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm sản phẩm mới</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên sản phẩm</th>
+            <th>Giá</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Price.ToString("#,##0") VNĐ</td>
+            </tr>
+        }
+    </tbody>
+</table>
