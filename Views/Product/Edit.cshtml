@@ -1,20 +1,20 @@
 ﻿@model Product
-
 @{
-    ViewData["Title"] = "Tạo mới sản phẩm";
+    ViewData["Title"] = "Sửa sản phẩm";
 }
 
-<h2>Thêm sản phẩm mới</h2>
+<h2>Chỉnh Sửa Sản Phẩm</h2>
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form id="Product-form" asp-action="Create" method="post">
+        <form id="Product-form" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
             <div class="form-group mb-3">
                 <label class="control-label">Tên sản phẩm</label>
                 <input asp-for="Name" class="form-control" />
             </div>
-            
+
 
             <div class="form-group mb-3">
                 <label class="control-label">Giá</label>
@@ -37,7 +37,7 @@
         }
            function Validation(){
             let isValid = true;
-            var tensp = $("#Name").val().trim();
+               var tensp = $("#Name").val().trim();
             var price = $("#Price").val().trim();
             $("#Name").removeClass("is-invalid");
             $("#Price").removeClass("is-invalid");
@@ -61,8 +61,7 @@
             }
 
             return isValid;
-        }
-        );
-        
+        });
+
     </script>
 }
